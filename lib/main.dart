@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techjartask/core/router/app_router.dart';
 import 'package:techjartask/core/theme/app_theme.dart';
 
 void main() {
@@ -11,10 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter().appRouter,
       title: 'TechJar Task',
       theme: AppTheme.getLightAppThemeData,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

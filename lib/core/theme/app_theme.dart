@@ -30,35 +30,6 @@ class AppTheme {
         .copyWith(background: AppColors.primaryColor),
   );
 
-  static final ThemeData _darkTheme = ThemeData(
-    // useMaterial3: true,
-    fontFamily: AppFonts.fontFamily,
-
-    indicatorColor: AppColors.primaryColor,
-    brightness: Brightness.dark,
-    cardTheme: const CardTheme(
-      elevation: 3,
-    ),
-    primaryColor: AppColors.primaryColor,
-
-    buttonTheme: _getButtonTheme,
-    canvasColor: Colors.white,
-    //For curve of bottomsheetdialog
-    hintColor: const Color(0xff585858),
-
-    bottomNavigationBarTheme:
-        const BottomNavigationBarThemeData(backgroundColor: Colors.black),
-    floatingActionButtonTheme:
-        const FloatingActionButtonThemeData(backgroundColor: Colors.black),
-    textTheme: _getTextTheme,
-    tabBarTheme: _getTabBarTheme,
-    appBarTheme: _getAppBarTheme,
-    colorScheme: ColorScheme.fromSwatch()
-        .copyWith(brightness: Brightness.dark)
-        .copyWith(secondary: AppColors.primaryColor)
-        .copyWith(background: AppColors.primaryColor),
-  );
-
   static ThemeData get getLightAppThemeData => _lightTheme;
 
   static AppBarTheme get _getAppBarTheme => const AppBarTheme(
