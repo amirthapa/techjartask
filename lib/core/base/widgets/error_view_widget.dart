@@ -1,7 +1,5 @@
-import 'package:base/src/constants/base_asset_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../base.dart';
+import 'package:techjartask/core/base/helper/ui_helpers.dart';
 
 class ErrorViewWidget extends StatelessWidget {
   final Function()? onPressed;
@@ -17,25 +15,25 @@ class ErrorViewWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Center(
-          child: SvgPicture.asset(
-            BaseAssetImage.imgUnderConstruction,
-            height: 128,
-          ),
-        ),
+        // Center(
+        //   child: SvgPicture.asset(
+        //     BaseAssetImage.imgUnderConstruction,
+        //     height: 128,
+        //   ),
+        // ),
         UiHelper.verticalSpace(vspace: Spacing.large),
-        message?.isNotEmpty == true
-            ? Text(
-                message!,
-                style: AppTheme.getTitleMediumStyle(context)?.copyWith(
-                  color: AppColors.defaultTextColor,
-                ),
-              )
-            : const SizedBox(),
-        (onPressed != null)
-            ? TextButton(
-                onPressed: onPressed, child: Text(retryText ?? "Retry?"))
-            : const SizedBox(),
+        // message?.isNotEmpty == true
+        //     ? Text(
+        //         message!,
+        //         style: AppTheme.getTitleMediumStyle(context)?.copyWith(
+        //           color: AppColors.defaultTextColor,
+        //         ),
+        //       )
+        //     : const SizedBox(),
+        // (onPressed != null)
+        //     ? TextButton(
+        //         onPressed: onPressed, child: Text(retryText ?? "Retry?"))
+        //     : const SizedBox(),
       ],
     );
   }

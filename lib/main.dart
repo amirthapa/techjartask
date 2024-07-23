@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
+import 'package:techjartask/core/provider/app_providers.dart';
 import 'package:techjartask/core/router/app_router.dart';
-import 'package:techjartask/core/theme/app_theme.dart';
+
+import 'core/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +19,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return OverlaySupport(
-      key: navigatorKey,
-      child: MaterialApp.router(
-        routerConfig: AppRouter().appRouter,
-        title: 'TechJar Task',
-        theme: AppTheme.getLightAppThemeData,
+    return MultiProvider(
+      providers: AppProviders.getProviders,
+      child: OverlaySupport(
+        key: navigatorKey,
+        child: MaterialApp.router(
+          routerConfig: AppRouter().appRouter,
+          title: 'TechJar Task',
+          theme: AppTheme.getLightAppThemeData,
+        ),
       ),
     );
   }

@@ -4,15 +4,12 @@ import 'theme.dart';
 
 class AppTheme {
   static final ThemeData _lightTheme = ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     fontFamily: AppFonts.fontFamily,
-
     brightness: Brightness.light,
     cardColor: Colors.white30,
     primaryColor: AppColors.primaryColor,
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Colors.black,
-    ),
+
     buttonTheme: _getButtonTheme,
     canvasColor: Colors.white,
     //For curve of bottomsheetdialog
@@ -27,15 +24,16 @@ class AppTheme {
     appBarTheme: _getAppBarTheme,
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(secondary: AppColors.primaryColor)
-        .copyWith(background: AppColors.primaryColor),
+        .copyWith(background: AppColors.primaryDarkColor),
   );
 
   static ThemeData get getLightAppThemeData => _lightTheme;
 
   static AppBarTheme get _getAppBarTheme => const AppBarTheme(
-      elevation: 3,
-      backgroundColor: AppColors.primaryColor,
-      foregroundColor: AppColors.bigTitleColor);
+        elevation: 1,
+        backgroundColor: Colors.white,
+        foregroundColor: AppColors.primaryColor,
+      );
 
   static ButtonThemeData get _getButtonTheme {
     return ButtonThemeData(
