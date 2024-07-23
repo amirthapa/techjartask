@@ -4,7 +4,7 @@ import 'theme.dart';
 
 class AppTheme {
   static final ThemeData _lightTheme = ThemeData(
-    // useMaterial3: true,
+    useMaterial3: true,
     fontFamily: AppFonts.fontFamily,
 
     brightness: Brightness.light,
