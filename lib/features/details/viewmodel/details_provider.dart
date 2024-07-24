@@ -41,6 +41,19 @@ class DetailsProvider extends BaseProvider {
     }
   }
 
+  Future<ApiResponse> sendComments(String comment) async {
+    CommentsModel createCommentsModel = CommentsModel(
+        postId: currentPost?.id,
+        id: 123,
+        name: "jklfas",
+        body: comment,
+        email: "eajfa@gmaial.com");
+    ApiResponse apiResponse = await DetailsApiService.sendComment(
+        postId: currentPost?.id ?? 0, commentsModel: createCommentsModel);
+
+    return apiResponse;
+  }
+
   setActiveSetComment(bool isActive) {
     activeSendComment = isActive;
     notifyListeners();

@@ -23,12 +23,6 @@ class DioClient {
   // global configration
   static Dio get dio {
     if (_dio == null) {
-      // Alice alice = Alice(
-      //   showNotification: true,
-      //   navigatorKey: navigatorKey,
-      //   showInspectorOnShake: true,
-      // );
-
       final BaseOptions options = BaseOptions(
           baseUrl: baseUrl,
           connectTimeout: _defaultTimeOut,
@@ -38,8 +32,7 @@ class DioClient {
 
       _dio = Dio(options);
       _dio?.interceptors.add(ApiInterceptors());
-      // Add http logger if application compiled in debug mode
-      // _dio?.interceptors.add(alice.getDioInterceptor());
+
       if (kDebugMode) {
         _dio?.interceptors.add(_logger);
       }

@@ -1,6 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:network/network.dart';
 import 'package:provider/provider.dart';
 import 'package:techjartask/core/base/base_screen.dart';
 import 'package:techjartask/core/base/base_state.dart';
@@ -27,7 +27,6 @@ class _CommentTextFieldState extends BaseState<CommentTextField> {
   @override
   void initState() {
     _textEditingController.addListener(() {
-      log(900);
       _textEditingController.text.isNotEmpty
           ? context.read<DetailsProvider>().setActiveSetComment(true)
           : context.read<DetailsProvider>().setActiveSetComment(false);
@@ -43,9 +42,29 @@ class _CommentTextFieldState extends BaseState<CommentTextField> {
         label: "Comment",
         maxLines: 6,
         hintText: "Enter your comments",
-        suffix: const CommentSurffixWidget(),
+        suffix: CommentSurffixWidget(
+          onSendPressed: () {
+            _callSendComments();
+          },
+        ),
         controller: _textEditingController,
       ),
     );
+  }
+
+  _callSendComments() async {
+    showProgressDialog();
+    ApiResponse addCommentResponse = await context
+        .read<DetailsProvider>()
+        .sendComments(_textEditingController.text);
+    dismissProgressDialog();
+
+    if (addCommentResponse.error == null &&
+        addCommentResponse.status == Status.completed) {
+      Fluttertoast.showToast(msg: "Comment sent successsfully");
+      _textEditingController.clear();
+    } else {
+      Fluttertoast.showToast(msg: "Comment sent Failed");
+    }
   }
 }

@@ -43,11 +43,14 @@ dependencies:
   # To make a network call
   network:
     path: ./packages/network
-
+  # For state management
   provider: ^6.1.2 
 
   # Save data 
   shared_preferences: ^2.2.3 
+
+  #show toast messsage
+  fluttertoast: ^8.1.1
 
 dev_dependencies:
   flutter_test:
