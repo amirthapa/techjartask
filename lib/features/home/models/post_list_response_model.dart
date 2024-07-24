@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class Post {
   int? userId;
   int? id;
@@ -39,10 +37,6 @@ class PostListResposeModel {
   PostListResposeModel({this.postList});
 
   PostListResposeModel.fromJson(List<dynamic> data) {
-    if (data.isNotEmpty) {
-      postList = (data).map((e) => Post.fromJson(e)).toList();
-    } else {
-      log("EMPTY");
-    }
+    postList = (data).map((e) => Post.fromJson(e)).toList();
   }
 }

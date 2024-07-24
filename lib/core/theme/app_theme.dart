@@ -10,7 +10,8 @@ class AppTheme {
     cardColor: AppColors.cardBackgroundColor,
 
     primaryColor: AppColors.primaryColor,
-
+    textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: Colors.black, selectionColor: AppColors.primaryColor),
     buttonTheme: _getButtonTheme,
     canvasColor: Colors.white,
     //For curve of bottomsheetdialog

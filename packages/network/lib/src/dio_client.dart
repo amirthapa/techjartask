@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:network/src/utils/api_interceptors.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -39,9 +40,9 @@ class DioClient {
       _dio?.interceptors.add(ApiInterceptors());
       // Add http logger if application compiled in debug mode
       // _dio?.interceptors.add(alice.getDioInterceptor());
-      // if (kDebugMode) {
-      //   _dio?.interceptors.add(_logger);
-      // }
+      if (kDebugMode) {
+        _dio?.interceptors.add(_logger);
+      }
     }
     return _dio!;
   }
