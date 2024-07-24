@@ -7,7 +7,8 @@ class AppTheme {
     useMaterial3: false,
     fontFamily: AppFonts.fontFamily,
     brightness: Brightness.light,
-    cardColor: Colors.white30,
+    cardColor: AppColors.cardBackgroundColor,
+
     primaryColor: AppColors.primaryColor,
 
     buttonTheme: _getButtonTheme,

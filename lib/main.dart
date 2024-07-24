@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:network/network.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 import 'package:techjartask/core/provider/app_providers.dart';
@@ -9,9 +10,6 @@ import 'core/theme/theme.dart';
 void main() {
   runApp(const MyApp());
 }
-
-/// GlobalKey for navigation
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,6 +23,7 @@ class MyApp extends StatelessWidget {
         key: navigatorKey,
         child: MaterialApp.router(
           routerConfig: AppRouter().appRouter,
+          key: navigatorKey,
           title: 'TechJar Task',
           theme: AppTheme.getLightAppThemeData,
         ),

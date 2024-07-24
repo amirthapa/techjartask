@@ -13,7 +13,7 @@ dependencies:
 
   dio: ^5.1.1
   pretty_dio_logger: ^1.1.1
-  flutter_alice: ^1.1.1
+  alice: ^0.4.0
 
 
 dev_dependencies:

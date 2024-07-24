@@ -1,54 +1,15 @@
 import 'dart:core';
-import 'dart:io' show Platform;
 
 import 'package:dio/dio.dart';
 import 'package:network/src/dio_client.dart';
 
-Future<Map<String, dynamic>> _buildHeaders(
-    String? requestedSnapshotTime) async {
+Future<Map<String, dynamic>> _buildHeaders() async {
   late Map<String, dynamic> headers;
-  requestedSnapshotTime == null
-      ? headers = {
-          "Content-Type": "application/json",
-          "SourceSystem": "HFM",
-          "BuildVersion": "",
-          "ApiVersion": "1",
-          "user-agent": _getPlatfromName(),
-          // "user-agent": {
-          //   'os': {'name': _getPlatfromName}
-          // },
-          "AppVersion": "1.0.0",
-        }
-      : requestedSnapshotTime.isEmpty == true
-          ? headers = {
-              "Content-Type": "application/json",
-              "SourceSystem": "HFM",
-              "BuildVersion": "",
-              "ApiVersion": "1",
-              "AppVersion": "1.0.0",
-              "user-agent": _getPlatfromName(),
-              // "user-agent": {
-              //   'os': {'name': _getPlatfromName()}
-              // }
-            }
-          : headers = {
-              "Content-Type": "application/json",
-              "SourceSystem": "HFM",
-              "BuildVersion": "",
-              "ApiVersion": "1",
-              "AppVersion": "1.0.0",
-              "sync_time": requestedSnapshotTime,
-              "user-agent": _getPlatfromName(),
-              // "user-agent": {
-              //   'os': {'name': _getPlatfromName}
-              // },
-              "is_snapshot": "1",
-            };
-  return headers;
-}
+  headers = {
+    "Content-Type": "application/json",
+  };
 
-_getPlatfromName() {
-  return Platform.isAndroid ? "android" : "ios";
+  return headers;
 }
 
 _handleUnauthorisedToken() async {
@@ -57,24 +18,7 @@ _handleUnauthorisedToken() async {
   // Wait for the token to be cancelled
   await DioClient().cancelToken.whenCancel;
   // Show logout dialog if the token is cancelled
-  if (DioClient().cancelToken.isCancelled) {
-    // // Check if dialog is already shown
-    // if (!isUnauthorizedDialogShown) {
-    //   // Set dialog shown flag to true
-    //   isUnauthorizedDialogShown = true;
-    //   // Show session logout dialog
-    //   showErrorDialog(
-    //       context: navigatorKey.currentContext!,
-    //       message: ApiErrorMessage.sessionExpire,
-    //       okButtonPressed: () {
-    //         // Set dialog shown flag to false
-    //         isUnauthorizedDialogShown = false;
-    //         // Create new dio token
-    //         DioClient().cancelToken = CancelToken();
-    //         // logout session
-    //         doLogout();
-    //       });
-  }
+  if (DioClient().cancelToken.isCancelled) {}
 }
 
 class ApiInterceptors extends Interceptor {
@@ -101,18 +45,8 @@ class ApiInterceptors extends Interceptor {
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    // requestedSnapshotTime = SharedPrefs.getString(PrefConstants.snapShotTime);
-    // options.headers.addAll(await _buildHeaders(requestedSnapshotTime));
-    // token = SharedPrefs.getString(PrefConstants.jwtToken);
-    // if (options.headers.containsKey("requirestoken")) {
-    //   bool requiresToken = options.headers["requirestoken"];
-    //   if (requiresToken == true && token != null) {
-    //     options.headers.addAll({
-    //       "Authorization": "Bearer $token",
-    //     });
-    //   }
-    //remove the auxiliary header
-    options.headers.remove("requirestoken");
+    options.headers.addAll(await _buildHeaders());
+
     return super.onRequest(options, handler);
   }
 }

@@ -3,6 +3,7 @@ library network;
 import 'package:flutter/material.dart';
 
 export 'package:network/src/api_services.dart';
+export 'package:network/src/dio_client.dart';
 export 'package:network/src/model/api_response.dart';
 
 /// GlobalKey for navigation

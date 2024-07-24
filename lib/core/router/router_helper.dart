@@ -1,18 +1,18 @@
 enum AppPages {
   home,
-  listDetails,
+  postDetails,
 }
 
 extension AppPageExtension on AppPages {
   String get toName {
     switch (this) {
       case AppPages.home:
-        return "HOME";
-      case AppPages.listDetails:
-        return "DETAILS";
+        return "home";
+      case AppPages.postDetails:
+        return "post details";
 
       default:
-        return "HOME";
+        return "home";
     }
   }
 
@@ -20,8 +20,8 @@ extension AppPageExtension on AppPages {
     switch (this) {
       case AppPages.home:
         return "/";
-      case AppPages.listDetails:
-        return "/details";
+      case AppPages.postDetails:
+        return "/postDetails";
 
       default:
         return "/";
@@ -32,8 +32,8 @@ extension AppPageExtension on AppPages {
     switch (this) {
       case AppPages.home:
         return "Home";
-      case AppPages.listDetails:
-        return "Details";
+      case AppPages.postDetails:
+        return "Post Details";
 
       default:
         return "TechJarTask";

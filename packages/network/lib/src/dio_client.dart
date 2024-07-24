@@ -1,7 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_alice/alice.dart';
-import 'package:network/network.dart';
 import 'package:network/src/utils/api_interceptors.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -25,11 +22,11 @@ class DioClient {
   // global configration
   static Dio get dio {
     if (_dio == null) {
-      Alice alice = Alice(
-        showNotification: true,
-        navigatorKey: navigatorKey,
-        showInspectorOnShake: true,
-      );
+      // Alice alice = Alice(
+      //   showNotification: true,
+      //   navigatorKey: navigatorKey,
+      //   showInspectorOnShake: true,
+      // );
 
       final BaseOptions options = BaseOptions(
           baseUrl: baseUrl,
@@ -41,10 +38,10 @@ class DioClient {
       _dio = Dio(options);
       _dio?.interceptors.add(ApiInterceptors());
       // Add http logger if application compiled in debug mode
-      _dio?.interceptors.add(alice.getDioInterceptor());
-      if (kDebugMode) {
-        _dio?.interceptors.add(_logger);
-      }
+      // _dio?.interceptors.add(alice.getDioInterceptor());
+      // if (kDebugMode) {
+      //   _dio?.interceptors.add(_logger);
+      // }
     }
     return _dio!;
   }

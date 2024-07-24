@@ -9,10 +9,12 @@ class AppRouter {
     routes: [
       GoRoute(
         path: AppPages.home.toPath,
+        name: AppPages.home.toName,
         builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: AppPages.listDetails.toPath,
+        path: AppPages.postDetails.toPath,
+        name: AppPages.postDetails.toName,
         builder: (context, state) => const DetailsScreen(),
       ),
     ],

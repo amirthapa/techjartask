@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:techjartask/core/theme/app_colors.dart';
 
 /// Common appbar with [Title] param
@@ -46,7 +47,12 @@ class _CenterTitleBackIconAppbarState extends State<CenterTitleBackIconAppbar> {
           ? IconButton(
               onPressed: widget.customNavigation ??
                   () {
-                    Navigator.of(context).maybePop();
+                    if (GoRouter.of(context).canPop()) {
+                      GoRouter.of(context).pop();
+                    } else {
+                      // Navigate back to the home route if there's nothing to pop
+                      GoRouter.of(context).go('/');
+                    }
                   },
               icon: Container(
                 width: 32,
